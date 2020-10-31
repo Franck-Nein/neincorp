@@ -1,0 +1,34 @@
+.body-img {
+ background: url(min3.jpg) no-repeat center center fixed; 
+ background-repeat:repeat-x;
+ background-size: cover;
+ animation:animatedBackground 240s linear infinite;
+ filter: blur(5px);
+ width:100%;
+ height:100%;
+ position:fixed;
+ z-index:-1;
+}
+.body-shadow {
+ position:fixed;
+ z-index:-1;
+ top:0;
+ width:100%;
+ height:100%;
+ -moz-box-shadow:inset 0 0 120px rgba(0,0,0,.5);
+ -webkit-box-shadow:inset 0 0 120px rgba(0,0,0,.5);
+ box-shadow:inset 0 0 200px rgba(0,0,0,1);
+ overflow:auto
+}
+body {
+
+}
+@keyframes animatedBackground {
+ 0% {
+  background-position:4000px 0
+ }
+ to {
+  background-position:0% 0%
+ }
+}
+
