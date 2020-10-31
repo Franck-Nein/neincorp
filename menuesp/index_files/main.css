@@ -1,14 +1,9 @@
-.body-shadow {
- background: url(../min3.jpg) no-repeat center center fixed; 
- background-repeat:repeat-x;
- background-size: cover;
- animation:animatedBackground 240s linear infinite;
- filter: blur(5px);
-}
-
 body {
  padding:0;
  margin:0;
+-background-image:url(http://neincorp.xyz/menu/dirt.png);
+ background-repeat:repeat;
+ animation:animatedBackground 240s linear infinite;
  font-family:'Overpass',sans-serif;
  background-color:#333333;
  color:#fff;
