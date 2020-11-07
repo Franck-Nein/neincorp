@@ -1,0 +1,13 @@
+[Adblock Plus 2.0]
+! Title: Test
+! Author: me
+! Version: 1.0
+! Expires: 1 days
+vectorizer.io##.modal-backdrop.fade.in
+vectorizer.io##.modal-content
+*.*##script:inject(bab-defuser.js)
+*##script:inject(bab-defuser.js)
+||cnx-software.com/wp-content/uploads/2017/12/buy-orange-pi-sbc.gif
+||i1.wp.com/static-assets.droidbuzz.top/images/video-player-fail-bg-v3.jpg
+hanime.tv#%#document.cookie="in_d3=1";
+||ad.a-ads.com/1079463?size=728x90
