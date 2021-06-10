@@ -5,6 +5,8 @@
     <meta charset=utf-8 />
     <link rel=stylesheet href=leaflet.css />
     <script src=leaflet.js></script>
+    <script src="leaflet-view-meta.js"></script>
+    <link rel="stylesheet" href="leaflet-view-meta.css"></script>
     <style>
         #map {
             position: absolute;
@@ -31,7 +33,9 @@
 -->
     <style type="text/css">
         img[src$=".gif"],
+        img[src$=".webp"],
         img[src$=".png"] {
+            image-rendering: auto;
             image-rendering: optimizeSpeed;
             image-rendering: -moz-pixelated;
             image-rendering: -o-pixelated;
@@ -42,22 +46,75 @@
             /* IE (non-standard property) */
         }
     </style>
+<script>
 
-    <script>
-        var map = L.map("map", {
+                        var leafletPluginAttribution =
+                                '<a href="https://github.com/rwev/leaflet-view-meta">view-meta</a>';
+
+	var day   = L.tileLayer("https://cdn.iminecrafting.ga/imn/mn/2d/tiles/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        }),
+		night  = L.tileLayer("https://cdn.iminecrafting.ga/imn/mn/2d/night/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        })
+        topo  = L.tileLayer("https://cdn.iminecrafting.ga/imn/mn/2d/topo/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        }),
+		caves1  = L.tileLayer("https://cdn.iminecrafting.ga/imn/mn/2d/3/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        }),
+		caves2  = L.tileLayer("https://cdn.iminecrafting.ga/imn/mn/2d/2/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        });
+
+	var map = L.map("map", {
             crs: L.CRS.Simple,
-            maxZoom: 5,
+            maxZoom: 10,
             minZoom: 0,
             zoom: 0,
             zoomSnap: 1,
             center: [0, 0],
+            layers: [day]
+        });
+
+	var baseLayers = {
+		"Day": day,
+		"Night": night,
+		"Topography": topo,
+		"Caves1": caves1,
+		"Caves2": caves2,
+	};
+
+	L.control.layers(baseLayers).addTo(map);
+	L.control.viewMeta({}).addTo(map);
+</script>
+<!-- infinite negative zoom, but default doesnt work
+    <script>
+        var map = L.map("map", {
+            crs: L.CRS.Simple,
+            maxZoom: 10,
+            minZoom: 2,
+            zoom: 2,
+            zoomSnap: 1,
+            center: [0, 0],
         }).setView([0, 0], 0);
-        L.tileLayer("tiles/{x},{y}.png", {
-            maxNativeZoom: 0,
-            minNativeZoom: 0,
+        L.tileLayer("tilesw/{x},{y}.webp", {
+            maxNativeZoom: 2,
+            minNativeZoom: 2,
             tileSize: 512,
         }).addTo(map);
     </script>
+    -->
 </body>
 
 </html>
