@@ -27,8 +27,8 @@ L.Control.ViewMeta = L.Control.extend({
 
         // map center
         this.addDividerRow(table, `Center`);
-        this.lat_e = this.addDataRow(table, `Latitude(inverted)`);
-        this.lng_e = this.addDataRow(table, `Longitude(inverted)`);
+        this.lat_e = this.addDataRow(table, `Latitude`);
+        this.lng_e = this.addDataRow(table, `Longitude`);
 
 
         this.nb_e = (table, `Northern Bound`);
@@ -94,8 +94,8 @@ L.Control.ViewMeta = L.Control.extend({
         let center = this.map.getCenter();
         let bounds = this.map.getBounds();
 
-        let latStr = this.formatNumber(center.lat);
-        let lngStr = this.formatNumber(center.lng);
+        let latStr = this.formatNumber(center.lat*-1);
+        let lngStr = this.formatNumber(center.lng*-1);
 
         let nbStr = this.formatNumber(bounds.getNorth());
         let sbStr = this.formatNumber(bounds.getSouth());
