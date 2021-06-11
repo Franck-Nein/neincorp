@@ -3,8 +3,10 @@
 
 <head>
     <meta charset=utf-8 />
-    <link rel=stylesheet href=leaflet.css />
-    <script src=leaflet.js></script>
+    <link rel=stylesheet href=../common/leaflet.css />
+    <script src=../common/leaflet.js></script>
+    <script src="../common/leaflet-view-meta.js"></script>
+    <link rel="stylesheet" href="../common/leaflet-view-meta.css"></script>
     <style>
         #map {
             position: absolute;
@@ -18,20 +20,11 @@
 
 <body>
     <div id=map></div>
-    <!--
-    <style type="text/css">
-        img[src$=".gif"], img[src$=".png"] {
-            image-rendering: -moz-crisp-edges;         /* Firefox */
-            image-rendering:   -o-crisp-edges;         /* Opera */
-            image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
-            image-rendering: crisp-edges;
-            -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
-         }
-    </style>
--->
     <style type="text/css">
         img[src$=".gif"],
+        img[src$=".webp"],
         img[src$=".png"] {
+            image-rendering: auto;
             image-rendering: optimizeSpeed;
             image-rendering: -moz-pixelated;
             image-rendering: -o-pixelated;
@@ -42,22 +35,80 @@
             /* IE (non-standard property) */
         }
     </style>
+<script>
 
-    <script>
-        var map = L.map("map", {
+                        var leafletPluginAttribution =
+                                '<a href="https://github.com/rwev/leaflet-view-meta">view-meta</a>';
+
+	var day   = L.tileLayer("https://cdn.iminecrafting.ga/imn/flatlands/DIM0/day/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        }),
+		night  = L.tileLayer("https://cdn.iminecrafting.ga/imn/flatlands/DIM0/night/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        })
+        topo  = L.tileLayer("https://cdn.iminecrafting.ga/imn/flatlands/DIM0/topo/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        }),
+		caves1  = L.tileLayer("https://cdn.iminecrafting.ga/imn/flatlands/DIM0/6/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        }),
+		caves2  = L.tileLayer("https://cdn.iminecrafting.ga/imn/flatlands/DIM0/5/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        }),
+		caves3  = L.tileLayer("https://cdn.iminecrafting.ga/imn/flatlands/DIM0/4/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        }),
+		caves4  = L.tileLayer("https://cdn.iminecrafting.ga/imn/flatlands/DIM0/3/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        }),
+		caves5  = L.tileLayer("https://cdn.iminecrafting.ga/imn/flatlands/DIM0/2/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        }),
+		caves6  = L.tileLayer("https://cdn.iminecrafting.ga/imn/flatlands/DIM0/1/{x},{y}.png", {
+            maxNativeZoom: 0,
+            minNativeZoom: 0,
+            tileSize: 512,
+        });
+
+	var map = L.map("map", {
             crs: L.CRS.Simple,
-            maxZoom: 5,
+            maxZoom: 10,
             minZoom: 0,
             zoom: 0,
             zoomSnap: 1,
             center: [0, 0],
-        }).setView([0, 0], 0);
-        L.tileLayer("tiles/{x},{y}.png", {
-            maxNativeZoom: 0,
-            minNativeZoom: 0,
-            tileSize: 512,
-        }).addTo(map);
-    </script>
+            layers: [day],
+            fadeAnimation: false
+        });
+	var baseLayers = {
+		"Day": day,
+		"Night": night,
+		"Topography": topo,
+		"Caves1": caves1,
+		"Caves2": caves2,
+		"Caves3": caves3,
+		"Caves4": caves4,
+		"Caves5": caves5,
+		"Caves6": caves6,
+	};
+	L.control.layers(baseLayers).addTo(map);
+	L.control.viewMeta({}).addTo(map);
+</script>
 </body>
-
 </html>

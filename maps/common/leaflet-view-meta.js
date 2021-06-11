@@ -27,8 +27,8 @@ L.Control.ViewMeta = L.Control.extend({
 
         // map center
         this.addDividerRow(table, `Center`);
-        this.lat_e = this.addDataRow(table, `Latitude`);
-        this.lng_e = this.addDataRow(table, `Longitude`);
+        this.lat_e = this.addDataRow(table, `Latitude(inverted)`);
+        this.lng_e = this.addDataRow(table, `Longitude(inverted)`);
 
 
         this.nb_e = (table, `Northern Bound`);

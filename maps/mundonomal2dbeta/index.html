@@ -3,10 +3,10 @@
 
 <head>
     <meta charset=utf-8 />
-    <link rel=stylesheet href=leaflet.css />
-    <script src=leaflet.js></script>
-    <script src="leaflet-view-meta.js"></script>
-    <link rel="stylesheet" href="leaflet-view-meta.css"></script>
+    <link rel=stylesheet href=../common/leaflet.css />
+    <script src=../common/leaflet.js></script>
+    <script src="../common/leaflet-view-meta.js"></script>
+    <link rel="stylesheet" href="../common/leaflet-view-meta.css"></script>
     <style>
         #map {
             position: absolute;
@@ -84,7 +84,8 @@
             zoom: 0,
             zoomSnap: 1,
             center: [0, 0],
-            layers: [day]
+            layers: [day],
+            fadeAnimation: false
         });
 
 	var baseLayers = {
